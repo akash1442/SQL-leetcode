@@ -1,0 +1,13 @@
+Write a query to output the names of those students whose best friends got offered a higher salary than them.
+Names must be ordered by the salary amount offered to the best friends.
+It is guaranteed that no two students got same salary offer.
+
+CODE:
+
+SELECT s.Name
+FROM Students s
+INNER JOIN Friends f ON s.ID = f.ID
+INNER JOIN Packages ps ON s.ID = ps.ID
+INNER JOIN Packages pf ON f.Friend_ID = pf.ID
+WHERE pf.Salary > ps.Salary
+ORDER BY pf.Salary;
